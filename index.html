@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Advanced Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <style>
+        /* Custom styles */
+        .bg-custom {
+            background-color: #1a202c; /* Dark background */
+        }
+        .hover-effect:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+        .gradient-bg {
+            background: linear-gradient(90deg, rgba(29, 78, 216, 1) 0%, rgba(99, 102, 241, 1) 100%);
+        }
+        .profile-photo {
+            width: 50px; /* Adjust size as needed */
+            height: 50px; /* Adjust size as needed */
+            border-radius: 50%; /* Make it circular */
+            position: relative; /* Centering */
+            margin: 0 auto; /* Center the image */
+        }
+        nav {
+            position: relative; /* Ensure nav is positioned for absolute children */
+            text-align: center; /* Center the nav items */
+        }
+    </style>
+</head>
+<body class="bg-blue-100">
+
+    <header class="bg-blue-600 text-white p-4 shadow-lg">
+        <nav class="flex justify-between items-center">
+            <h1 class="text-3xl font-bold">My Portfolio</h1>
+            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.RWBSdzfP9z5KHucA62s7nAHaHa%26pid%3DApi&f=1&ipt=f8792683c44f3486cd4b2913167dabfa9dae13b30feb5bb56976ba4427e58f3a&ipo=images" alt="Profile Photo" class="profile-photo"> <!-- Add your image path here -->
+            <ul class="flex space-x-6">
+                <li><a href="about.html" class="hover:underline">About</a></li>
+                <li><a href="details.html" class="hover:underline">My Details</a></li>
+                <li><a href="contact.html" class="hover:underline">Contact Me</a></li>
+                <li><a href="projects.html" class="hover:underline">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="p-6">
+        <section id="about" class="my-8" data-aos="fade-up">
+            <h2 class="text-3xl font-bold mb-4">About Me</h2>
+            <p class="text-lg">Welcome to my portfolio! I am MITANSHU PATEL, a passionate Web Developer.</p>
+        </section>
+        
+        <section id="details" class="my-8" data-aos="fade-up">
+            <h2 class="text-3xl font-bold mb-4">My Details</h2>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="font-bold text-xl">Name: MITANSHU PATEL</h3>
+                <p class="text-lg">Profession: STUDENT</p>
+                <p class="text-lg">Skills: HTML, CSS, JS, PHP, MySQL</p>
+                <p class="text-lg">Bio: I am a Full Stack Web Developer skilled in HTML, CSS, JavaScript, php and mysql. I enjoy building responsive web applications and solving complex problems through code.</p>
+            </div>
+        </section>
+
+        <section id="projects" class="my-8" data-aos="fade-up">
+            <h2 class="text-3xl font-bold mb-4">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-lg hover-effect">
+                    <h3 class="font-bold text-xl">No Projects For Now </h3>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="my-8" data-aos="fade-up">
+            <h2 class="text-3xl font-bold mb-4">Contact</h2>
+            <form id="contactForm" class="bg-white p-6 rounded-lg shadow-lg">
+                <div class="mb-4">
+                    <label for="name" class="block text-lg font-medium">Name</label>
+                    <input type="text" id="name" name="name" class="border rounded w-full p-3" required>
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block text-lg font-medium">Email</label>
+                    <input type="email" id="email" name="email" class="border rounded w-full p-3" required>
+                </div>
+                <div class="mb-4">
+                    <label for="message" class="block text-lg font-medium">Message</label>
+                    <textarea id="message" name="message" class="border rounded w-full p-3" required></textarea>
+                </div>
+                <button type="submit" class="bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition duration-200">Send Message</button>
+            </form>
+        </section>
+
+        <section id="testimonials" class="my-8" data-aos="fade-up">
+            <h2 class="text-3xl font-bold mb-4">Testimonials</h2>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <p class="italic ">"MITANSHU is a dedicated developer who consistently delivers high-quality work. His attention to detail is impressive!"</p>
+                <p class="text-right font-bold">- Mitanshu patel</p>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-blue-600 text-white p-4 text-center">
+        <p>&copy; 2025 My Advanced Portfolio</p>
+    </footer>
+
+    <div id="modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h3 id="modalTitle" class="font-bold text-xl"></h3>
+            <p id="modalDescription" class="mt-2"></p>
+            <button onclick="closeModal()" class="mt-4 bg-blue-600 text-white p-2 rounded">Close</button>
+        </div>
+    </div>
+
+    <script>
+        AOS.init(); // Initialize AOS for animations
+
+        function openModal(title, description) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDescription').innerText = description;
+            document.getElementById('modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.add('hidden');
+        }
+
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Message sent! Thank you for contacting me.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
